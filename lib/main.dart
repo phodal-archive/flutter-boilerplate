@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:moPass/pages/http_example_page.dart';
 
 import 'package:moPass/pages/my_home_page.dart';
+import 'package:moPass/pages/profile_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,9 +32,9 @@ class _HomePageState extends State<HomePage>
   int _currentIndex = 1;
 
   final List<Widget> _children = [
-    MyHomePage(title: 'Calendar Check', index: '1'),
+    MyHomePage(title: 'Home Page', index: '1'),
     HttpExamplePage(title: 'HTTP Example Page'),
-    MyHomePage(title: 'Sliders', index: '3')
+    ProfilePage(title: 'Profile Page')
   ];
 
   @override

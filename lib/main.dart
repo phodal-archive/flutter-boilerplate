@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:moPass/pages/http_example_page.dart';
+import 'package:moPass/ui/pages/http_example_page.dart';
 
-import 'package:moPass/pages/my_home_page.dart';
-import 'package:moPass/pages/profile_page.dart';
+import 'package:moPass/ui/pages/my_home_page.dart';
+import 'package:moPass/ui/pages/profile_page.dart';
 
 void main() => runApp(MyApp());
 

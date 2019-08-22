@@ -35,28 +35,28 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            RaisedButton(
+              child: Text('跳转到 ProfilePage'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
             new Padding(
               padding: EdgeInsets.only(bottom: 10.0),
             ),
-            Text(
-                'You have pushed the button this many times:',
+            Text('You have pushed the button this many times:',
                 style: TextStyle(
-                  fontSize: 22.0,
+                  fontSize: 12.0,
                   color: Colors.black,
                   fontWeight: FontWeight.w500,
-                )
-            ),
+                )),
             new TextFormField(
               decoration: InputDecoration(
                   border: new OutlineInputBorder(
-                      borderSide:
-                      new BorderSide(color: Colors.teal)),
+                      borderSide: new BorderSide(color: Colors.teal)),
                   labelText: "List name",
                   contentPadding: EdgeInsets.only(
-                      left: 16.0,
-                      top: 20.0,
-                      right: 16.0,
-                      bottom: 5.0)),
+                      left: 16.0, top: 20.0, right: 16.0, bottom: 5.0)),
               controller: listNameController,
               autofocus: false,
               style: TextStyle(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:moPass/pages/http_example_page.dart';
 
 import 'package:moPass/pages/my_home_page.dart';
 
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage>
 
   final List<Widget> _children = [
     MyHomePage(title: 'Calendar Check', index: '1'),
-    MyHomePage(title: 'Calendar', index: '2'),
+    HttpExamplePage(title: 'HTTP Example Page'),
     MyHomePage(title: 'Sliders', index: '3')
   ];
 

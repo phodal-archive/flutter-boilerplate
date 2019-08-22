@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:developer' as developer;
 
 import 'package:flutter/material.dart';
 
@@ -17,11 +18,15 @@ class _HttpExamplePageState extends State<HttpExamplePage> {
   _getIPAddress() async {
     var url = 'https://httpbin.org/ip';
     var httpClient = new HttpClient();
+    developer.log('log me', name: 'moPass');
 
     String result;
     try {
       var request = await httpClient.getUrl(Uri.parse(url));
       var response = await request.close();
+
+      developer.log(response.toString(), name: 'moPass');
+
       if (response.statusCode == HttpStatus.ok) {
         var json = await response.transform(utf8.decoder).join();
         var data = jsonDecode(json);
@@ -31,6 +36,7 @@ class _HttpExamplePageState extends State<HttpExamplePage> {
         'Error getting IP address:\nHttp status ${response.statusCode}';
       }
     } catch (exception) {
+      developer.log('Failed getting IP address', name: 'moPass');
       result = 'Failed getting IP address';
     }
 
@@ -42,6 +48,12 @@ class _HttpExamplePageState extends State<HttpExamplePage> {
     setState(() {
       _ipAddress = result;
     });
+  }
+
+
+  @override
+  bool get mounted {
+    developer.log('mounted');
   }
 
   @override

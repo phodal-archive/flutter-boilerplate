@@ -1,7 +1,7 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:developer' as developer;
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class HttpExamplePage extends StatefulWidget {
@@ -17,24 +17,18 @@ class _HttpExamplePageState extends State<HttpExamplePage> {
 
   _getIPAddress() async {
     var url = 'https://httpbin.org/ip';
-    var httpClient = new HttpClient();
     developer.log('log me', name: 'moPass');
 
     String result;
     try {
-      var request = await httpClient.getUrl(Uri.parse(url));
-      var response = await request.close();
-
-      developer.log(response.toString(), name: 'moPass');
+      Response response = await Dio().get(url);
 
       if (response.statusCode == HttpStatus.ok) {
-        var json = await response.transform(utf8.decoder).join();
-        var data = jsonDecode(json);
-        result = data['origin'];
+        result = response.data.toString();
       } else {
-        result =
-        'Error getting IP address:\nHttp status ${response.statusCode}';
+        result = 'Error getting IP address:\nHttp status ${response.statusCode}';
       }
+
     } catch (exception) {
       developer.log('Failed getting IP address', name: 'moPass');
       result = 'Failed getting IP address';
@@ -54,6 +48,7 @@ class _HttpExamplePageState extends State<HttpExamplePage> {
   @override
   bool get mounted {
     developer.log('mounted');
+    return true;
   }
 
   @override

@@ -1,28 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'package:my_app/pages/my_home_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:moPass/pages/my_home_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'moPass',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(),
     );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  int _currentIndex = 1;
+
+  final List<Widget> _children = [
+    MyHomePage(title: 'Calendar Check', index: '1'),
+    MyHomePage(title: 'Calendar', index: '2'),
+    MyHomePage(title: 'Sliders', index: '3')
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTabTapped,
+        currentIndex: _currentIndex,
+        fixedColor: Colors.deepPurple,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: new Icon(FontAwesomeIcons.calendarCheck),
+              title: new Text("")),
+          BottomNavigationBarItem(
+              icon: new Icon(FontAwesomeIcons.calendar), title: new Text("")),
+          BottomNavigationBarItem(
+              icon: new Icon(FontAwesomeIcons.slidersH), title: new Text(""))
+        ],
+      ),
+      body: _children[_currentIndex],
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }

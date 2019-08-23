@@ -50,11 +50,13 @@ class _HomePageState extends State<HomePage>
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: new Icon(FontAwesomeIcons.calendarCheck),
-              title: new Text("")),
+              title: new Text("Home")),
           BottomNavigationBarItem(
-              icon: new Icon(FontAwesomeIcons.calendar), title: new Text("")),
+              icon: new Icon(FontAwesomeIcons.calendar),
+              title: new Text("Clean")),
           BottomNavigationBarItem(
-              icon: new Icon(FontAwesomeIcons.slidersH), title: new Text(""))
+              icon: new Icon(FontAwesomeIcons.slidersH),
+              title: new Text("Profile"))
         ],
       ),
       body: _children[_currentIndex],

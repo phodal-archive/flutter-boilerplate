@@ -41,6 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, '/profile');
               },
             ),
+            RaisedButton(
+              child: Text('跳转到 Camera'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/camera');
+              },
+            ),
             new Padding(
               padding: EdgeInsets.only(bottom: 10.0),
             ),

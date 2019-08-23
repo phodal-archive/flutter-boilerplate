@@ -19,6 +19,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  camera:
+  path_provider:
+  path:
 
   cupertino_icons: ^0.1.2
   dio: 2.1.0
@@ -26,7 +29,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   font_awesome_flutter: 8.5.0
 
 flutter:

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -6,10 +7,28 @@ import 'package:moPass/ui/pages/http_example_page.dart';
 
 import 'package:moPass/ui/pages/my_home_page.dart';
 import 'package:moPass/ui/pages/profile_page.dart';
+import 'package:moPass/ui/screen/take_picture_screen.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
 
-class MyApp extends StatelessWidget {
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+  runApp(MyApp(firstCamera: firstCamera,));
+}
+
+class MyApp extends StatefulWidget {
+  MyApp({Key key, this.firstCamera}) : super(key: key);
+  final CameraDescription firstCamera;
+
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +38,10 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(),
       routes: {
-        '/profile': (context) => ProfilePage(title: 'Home -> Profile')
+        '/profile': (context) => ProfilePage(title: 'Home -> Profile'),
+        '/camera': (context) => TakePictureScreen(
+          camera: widget.firstCamera,
+        ),
       },
     );
   }
